@@ -25,22 +25,22 @@ class AddUserActivity : AppCompatActivity() {
         var username: String = findViewById<EditText>(R.id.username_edit_text).text.toString()
         var email: String = findViewById<EditText>(R.id.email2_edit_text).text.toString()
         var name: String = findViewById<EditText>(R.id.name_edit_text).text.toString()
-        var phoneNo: String = findViewById<EditText>(R.id.phone_edit_text).text.toString()
+        var phoneNo1: String = findViewById<EditText>(R.id.phone_edit_text).text.toString()
         val user1 = hashMapOf(
             "name" to name,
             "username" to username,
-            "phoneNo" to phoneNo
+            "phoneNo" to phoneNo1
         )
 
-        db?.collection("Users")?.document(email)
-            ?.set(user1)
-            ?.addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-            ?.addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
-
-//        db?.collection("Users")
-//            ?.add(user1)
+//        db?.collection("Users")?.document(phoneNo1)
+//            ?.set(user1)
 //            ?.addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
 //            ?.addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+
+        db?.collection("Users")
+            ?.add(user1)
+            ?.addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            ?.addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
 
 
         startActivity(Intent(this, MainActivity::class.java))

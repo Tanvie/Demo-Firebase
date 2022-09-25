@@ -28,11 +28,11 @@ class ReadRecordsActivity : AppCompatActivity() {
         // one record
 
         var email: String = findViewById<EditText>(R.id.email3_edit_text).text.toString()
-        val docRef = db!!.collection("Users").document(email)
-        docRef.get()
+            db!!.collection("Users").document(email)
+            .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    Log.d("datasnap is here", "DocumentSnapshot data: ${document.data}")
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -47,7 +47,7 @@ class ReadRecordsActivity : AppCompatActivity() {
 
         var phNo: String = findViewById<EditText>(R.id.phone_num_edit_text).text.toString()
         db!!.collection("Users")
-            .whereEqualTo("phoneNo", phNo )
+            .whereEqualTo("gender", "female" )
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
